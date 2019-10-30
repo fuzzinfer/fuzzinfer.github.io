@@ -1,0 +1,174 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd">
+<!--  1970-01-01 01:00 staff en --><html>
+<head>
+<title>FuzzInfer: Fuzzing Protocol Implementations</title>
+<meta name="description"
+content="FuzzInfer: Fuzzing Protocol Implementations">
+<meta name="keywords" content="Marcel, B&ouml;hme, Boehme, Bohme, Böhme, Software Engineering, Efficiency, Testing Efficiency, Efficiency of Automated Testing">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="StyleSheet" href="https://www.st.cs.uni-saarland.de/include/style.css" type="text/css" media="screen">
+<link rel="StyleSheet" href="https://www.st.cs.uni-saarland.de/include/style.css" type="text/css" media="print">
+<link rel="shortcut icon" href="old_hp/css/favicon.ico">
+<!-- <link rel="home" href="/"> -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-36688430-4', 'auto');
+  ga('require', 'linkid', 'linkid.js');
+  ga('require', 'displayfeatures');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body bgcolor="#eeeeee" 
+      text="#000000" 
+      link="#c00000" 
+      vlink="#a00000" 
+      alink="#ffa000">
+<p style="position:fixed; top: 8px; margin: 0; left: 850px; width: 300px; padding: 5px; background-color:#ffffff">
+<a href="https://fuzzinfer.github.io">Home</a><br/>
+<a href="#title">Summary</a><br/>
+<a href="#team">Team</a><br/>
+<br/>
+</p>
+
+<table cellspacing=2 cellpadding=0 border=0 style="margin-left: 3px; max-width: 830px;" bgcolor="#ffffff" >
+<tr><th bgcolor="#c00000" width="1%">&nbsp;</th><th bgcolor="#ffffff" width="1%">&nbsp;</th>
+<td valign=middle align=left>
+<img itemprop="image" id="top" alt="" src="https://mboehme.github.com/monash.png" border=0 height="180px"/>
+<img itemprop="image" id="top" alt="" src="http://www.nus.edu.sg/images/default-source/base/logo.png" style="border:30px solid white" height="120px"/>
+</td>
+</tr>
+<tr><th bgcolor="#c0c0c0" width="30px">&nbsp;</th><th bgcolor="#ffffff" width="30px">&nbsp;</th><td colspan=3 style="font-family:Helvetica;" >
+<div style="width: 93%; margin-left: 0px; margin-top: 20px; margin-bottom: 20px; border: dotted 1px black; padding: 20px; background-color: #C0C0C0; padding-bottom: 0px;">
+<b>We are hiring!</b><br/>
+  Seeking one highly motivated Research Fellow (2 years) with some experience in fuzzing / vulnerability discovery.
+  Want to apply? Send your <i>CV, transcripts, and your reasons why you would like work on automated vulnerability discovery.</i> to <script type="text/javascript">
+//<![CDATA[
+<!--
+var x="function f(x){var i,o=\"\",ol=x.length,l=ol;while(x.charCodeAt(l/13)!" +
+"=48){try{x+=x;l+=l;}catch(e){}}for(i=l-1;i>=0;i--){o+=x.charAt(i);}return o" +
+".substr(0,ol);}f(\")37,\\\"BHL_WJ220\\\\]M720\\\\530\\\\100\\\\C100\\\\010\\"+
+"\\310\\\\4430\\\\600\\\\=000\\\\t\\\\310\\\\700\\\\610\\\\200\\\\q28?`p}1,Q" +
+".W7ldsoq$!^fr120\\\\S120\\\\030\\\\330\\\\9530\\\\230\\\\630\\\\020\\\\330\\"+
+"\\120\\\\\\\\\\\\530\\\\520\\\\410\\\\430\\\\410\\\\100\\\\Q500\\\\530\\\\4" +
+"00\\\\610\\\\700\\\\010\\\\F?_700\\\\500\\\\-6}=gxq6;3!=!%771\\\\$!+ 9(%-\\" +
+"\"(f};o nruter};))++y(^)i(tAedoCrahc.x(edoCrahCmorf.gnirtS=+o;721=%y;i=+y)3" +
+"7==i(fi{)++i;l<i;0=i(rof;htgnel.x=l,\\\"\\\"=o,i rav{)y,x(f noitcnuf\")"     ;
+while(x=eval(x));
+//-->
+//]]>
+</script>.<br/>
+</div>
+	
+<br/>
+<h2><a id="title">FuzzInfer: Fuzzing Protocol Implementations</a></h2>
+<p>The discovery of vulnerabilities in web applications before an attacker does can save companies
+	millions of dollars. According to a <a href="https://www.akamai.com/uk/en/about/news/press/2018-press/ponemon-institute-and-akamai-reveal-the-tr ends-in-the-cost-of-web-application-and-denial-of-service-attacks-asia-pacific.jsp">2018 study</a> <i>"[..] the total average cost of web 
+	application attacks in APAC over the past 12 months was $2.4 million per company, while
+	the total average cost of DoS attacks was $1.1 million. [..] Web application attacks 
+	are a constant threat for companies. 43 percent of respondents said that web application
+	security is more critical than other security issues faced by their organizations."</i>
+	Most critically, a vulnerability in a web application can be exploited remotely over the 
+	network from anywhere in the world.</p> 
+
+<p>This project aims to develop stateful fuzzing techniques that can discover
+	vulnerabilities that could otherwise be used for remote arbitrary execution attacks. In this
+	project, we are planning to first tackle the challenges of statefulness and protocol
+	inference before we address the (greybox) problem where only the compiled x86 program
+	binary of the protocol implementation or web application is available.</p>
+
+<!--h2>Publications</h2-->
+
+	
+<h2><a id="team">Team</a></h2>
+<table>
+<tr><td colspan="2"><b>Principal Investigators</b></td></tr>
+<tr><td><img itemprop="image" id="top" alt="" src="https://www.comp.nus.edu.sg/~abhik/abhik-pictures/s-light.JPG" border=0 width="150px"/></td>
+<td><b>Abhik Roychudhury</b> is a Professor of Computer Science at National University of Singapore. 
+	His research focuses on software testing and analysis, trust-worthy software construction
+	and software security. He is currently leading the Singapore Cyber-security Consortium. He has
+	served as an Associate Editor of IEEE Transactions on Software Engineering (TSE) during
+	2014-18, and is serving as an Associate Editor of IEEE Transactions on Dependable and Secure
+	Computing (TDSC) during 2019-21. Abhik received his Ph.D. in Computer Science from the State University of
+	New York at Stony Brook in 2000.</td></tr>
+<tr><td><img itemprop="image" id="top" alt="" src="https://mboehme.github.io/Marcel.jpg" border=0 width="150px"/></td>
+<td><b>Marcel B&ouml;hme</b> is a 2019 ARC DECRA Fellow and Lecturer (Asst Prof) at Monash University, Australia. He was research fellow at CISPA,
+	Saarland University, Germany from 2014 to 2015 and completed his PhD at National University of Singapore in
+	2014. Marcel’s research is focussed on automated vulnerability discovery, analysis, testing,
+	debugging, and repair of large software systems. His tools discovered 100+ bugs in widely-used
+	software systems, more than 60 of which are security-critical vulnerabilities registered as
+	CVEs at the US National Vulnerability Database.</td>
+</tr>
+<tr><td colspan="2" style="padding-top:5px"><b>Team Members</b></td></tr>
+<tr><td><img itemprop="image" id="top" alt="" src="https://thuanpv.github.io/assets/images/Thuan.jpg" border=0 width="150px"/></td>
+<td><b>Van-Thuan Pham</b> is a postdoctoral research fellow at Monash University, Australia. During 
+	his PhD studies at NUS, under the supervision of Prof Abhik Roychoudhury he conducted research
+	on fuzz testing techniques (including black-box, coverage-based grey-box and symbolic-execution
+	based white-box fuzzing) and applied these techniques to vulnerability detection, crash
+	reproduction and debugging.</td></tr>
+<tr><td><img itemprop="image" id="top" alt="" src="https://mingyuan.aerobaticapp.com/images/avatar--md5--8a6dfc37affa41ee178e2cc83af7edc3.png" border=0 width="150px"/></td>
+<td><b>Mingyuan Gao</b> is a PhD student at National University of Singapore. Before that he was a 
+	Research Engineer at Institute for Infocomm Research, Agency for Science, Technology and Research (A*STAR),
+	Singapore. Before joining A*STAR, Mingyuan worked as a Research Assistant at School of Computing,
+	National University of Singapore (NUS) for two years. He received an MSc. in Computer Science
+	and Engineering (System Software) from Pohang University of Science and Technology
+	(POSTECH, South Korea), and a B.Eng. in Software Engineering from Xi'an Jiaotong University 
+	(XJTU, China).</td></tr>
+<tr><td><img itemprop="image" id="top" alt="" src="RF.png" border=0 width="150px"/></td>
+<td>We have an <b>opening for a Research Fellow position</b> at Monash University, Australia for two years. 
+	The Research Fellow would conduct this research within our Monash fuzzing team in 
+	collaboration with the team of Abhik Roychoudhury at the National University of Singapore.
+	The applicant should have
+<ul>
+<li> Strong background in system building, software testing, and bug finding</li>
+<li> Some success in CTFs, hackathons, or bug bounty programs</li>
+<li> Some background in binary analysis, reverse engineering, fuzzing</li>
+<li> Background in statistics, research, and experimentation desirable</li>
+</ul>
+	</td></tr>
+	</table>
+
+You can find more information here:
+<ul>
+<li> <a href="https://mboehme.github.io/paper/TSE18.pdf">Coverage-based Greybox Fuzzing as Markov Chain</a>, seminal work on boosting greybox fuzzing</li>
+<li> <a href="https://mboehme.github.io/paper/CCS17.pdf">Directed Greybox Fuzzing</a>, seminal work on directing greybox fuzzing</li>
+<li> <a href="https://arxiv.org/abs/1811.09447">Smart Greybox Fuzzing</a>, makes greybox fuzzing input-structure-aware</li>
+<li> <a href="https://www.monash.edu/it/our-research/graduate-research/how-to-apply">Monash: How to apply</a></li>
+</ul>
+
+
+<p><address>
+<small class=address><font color="#b0b0b0">Marcel B&ouml;hme
+&lt; <script type="text/javascript">
+//<![CDATA[
+<!--
+var x="function f(x){var i,o=\"\",ol=x.length,l=ol;while(x.charCodeAt(l/13)!" +
+"=48){try{x+=x;l+=l;}catch(e){}}for(i=l-1;i>=0;i--){o+=x.charAt(i);}return o" +
+".substr(0,ol);}f(\")37,\\\"BHL_WJ220\\\\]M720\\\\530\\\\100\\\\C100\\\\010\\"+
+"\\310\\\\4430\\\\600\\\\=000\\\\t\\\\310\\\\700\\\\610\\\\200\\\\q28?`p}1,Q" +
+".W7ldsoq$!^fr120\\\\S120\\\\030\\\\330\\\\9530\\\\230\\\\630\\\\020\\\\330\\"+
+"\\120\\\\\\\\\\\\530\\\\520\\\\410\\\\430\\\\410\\\\100\\\\Q500\\\\530\\\\4" +
+"00\\\\610\\\\700\\\\010\\\\F?_700\\\\500\\\\-6}=gxq6;3!=!%771\\\\$!+ 9(%-\\" +
+"\"(f};o nruter};))++y(^)i(tAedoCrahc.x(edoCrahCmorf.gnirtS=+o;721=%y;i=+y)3" +
+"7==i(fi{)++i;l<i;0=i(rof;htgnel.x=l,\\\"\\\"=o,i rav{)y,x(f noitcnuf\")"     ;
+while(x=eval(x));
+//-->
+//]]>
+</script>
+
+&middot; https://fuzzinfer.github.io &middot; Updated: 2019-09-06 14:05</font>
+</small>
+</address>
+</td></tr></table>
+</body>
+</html>
+
+
